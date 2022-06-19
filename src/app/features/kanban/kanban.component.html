@@ -1,0 +1,38 @@
+<section class="d-flex flex-column h-100 bg-light- bg-image">
+    <nav class="navbar navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand mb-0 h1 text-bold text-white" routerLink="/">Kanban Board</a>
+        </div>
+    </nav>
+
+    <!-- Here the class `flex-1` is required for the container to take the remaining height to enable scrolling -->
+    <div class="flex-1 container-fluid overflow-auto h-100 d-flex flex-column" cdkScrollable>
+        <!-- Here the classes `overflow-auto` and directive `cdkScrollable` helps with the scroll behavior when the card is dragged -->
+        <!-- Also `cdkDropListAutoScrollStep` is use for enabling speed scrolling for columns -->
+        <div class="kanban-cols flex-1 d-flex overflow-auto" #colElem cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="handleDropColumns($event)" [cdkDropListAutoScrollStep]="15" cdkScrollable>
+
+            <!-- `cdkDropListGroup` - will intialize the dynamic drop zones and connects them together so that the child draggable's can share multiple drop zones (ie., columns) -->
+            <div class="kanban-cols__holder d-flex flex-row gap-3" cdkDropListGroup>
+                <!-- Column -->
+                <app-kanban-column cdkDrag cdkDragLockAxis="x" *ngFor="let column of kanbanColumns" [cdkDragData]="column" [column]="column" class="kanban-column">
+
+                    <!-- Column drag handle -->
+                    <fa-icon [icon]="['fas', 'bars']" dragHandleRenderer cdkDragHandle></fa-icon>
+
+                    <!-- Task list -->
+                    <!-- Here `cdkDropListAutoScrollStep` is use for enabling speed scrolling for task views -->
+                    <div class="kanban-tasks vstack gap-2" taskRenderer cdkDropList [cdkDropListData]="column.tasks" (cdkDropListDropped)="handleDropTasks($event)" [cdkDropListAutoScrollStep]="25">
+
+                        <!-- Task -->
+                        <app-kanban-task cdkDrag *ngFor="let task of column.tasks" [cdkDragData]="task" [task]="task" class="kanban-task">
+                        </app-kanban-task>
+
+                    </div>
+
+                </app-kanban-column>
+
+            </div>
+
+        </div>
+    </div>
+</section>

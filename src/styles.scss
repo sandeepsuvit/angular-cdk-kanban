@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Overflow utils */
+
+.overflow {
+    &-x-auto {
+        overflow-x: auto;
+    }
+    &-y-auto {
+        overflow-y: auto;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/* Flex utils */
+
+.flex {
+    &-none {
+        flex: none;
+    }
+    &-1 {
+        flex: 1 !important;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/* Blurred bg */
+
+.blur-bg {
+    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255, 255, 255, .6);
+}
+
+.text-bold {
+    font-weight: 700;
+    &-md {
+        font-weight: 600;
+    }
+}

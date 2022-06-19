@@ -1,0 +1,20 @@
+<div class="flex-1 d-flex flex-column blur-bg">
+    <section class="kanban-column__header d-flex justify-content-between align-items-center p-3">
+        <div class="hstack gap-3">
+            <div class="kanban-column__drag-handle">
+                <!-- <fa-icon [icon]="['fas', 'bars']"></fa-icon> -->
+                <ng-content select="[dragHandleRenderer]"></ng-content>
+            </div>
+            <p class="text-bold-md mb-0">{{column.name}}</p>
+            <div class="mb-0 badge rounded-pill bg-secondary text-white">{{column.tasks.length}}</div>
+        </div>
+
+    </section>
+
+    <!-- Here the classes `overflow-auto vstack` for the drop zone -->
+    <!-- Also directive `cdkScrollable` helps with the scroll behavior when the card is dragged -->
+    <section class="kanban-cards__holder overflow-auto vstack px-3 mb-3" cdkScrollable>
+        <!-- Content will be loaded from the parent -->
+        <ng-content></ng-content>
+    </section>
+</div>

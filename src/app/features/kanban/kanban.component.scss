@@ -1,0 +1,68 @@
+/* Custom styles */
+
+.bg-image {
+    background-color: #ffac81;
+}
+
+.kanban-cols {
+    &__holder {
+        // Important to have a full width layout
+        width: 100vh;
+    }
+}
+
+.cdk-drag-handle {
+    cursor: grab;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0.2;
+}
+
+.cdk-drag-animating {
+    transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.kanban-cols.cdk-drop-list-dragging .kanban-column:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.kanban-tasks.cdk-drop-list-dragging .kanban-task:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.kanban-column.cdk-drag-preview {
+    // background: rgba(255, 255, 255, .6);
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14);
+    // Hide scrollbar while scrolling
+    .kanban-tasks {
+        overflow: hidden;
+    }
+}
+
+.kanban-task {
+    cursor: pointer;
+}
+
+.kanban-task.cdk-drag-preview {
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14);
+}
+
+.kanban-tasks:empty {
+    position: relative;
+    &::before {
+        position: absolute;
+        content: "Drop tasks here";
+        opacity: 0.3;
+        font-size: 1.2rem;
+        font-weight: 300;
+        font-style: italic;
+        text-align: center;
+        left: 0;
+        top: 45%;
+        width: 100%;
+    }
+}
